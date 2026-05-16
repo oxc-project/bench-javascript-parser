@@ -20,6 +20,12 @@ const PARSERS = {
       "A JavaScript compiler and parser used by the Babel toolchain.",
     url: "https://github.com/babel/babel/tree/main/packages/babel-parser",
   },
+  meriyah: {
+    name: "Meriyah",
+    description:
+      "A 100% compliant, self-hosted JavaScript parser with a high focus on both performance and stability.",
+    url: "https://github.com/meriyah/meriyah",
+  },
   oxc: {
     name: "Oxc",
     description:
@@ -43,6 +49,7 @@ const PARSERS = {
 const CHART_COLORS: Record<string, string> = {
   acorn: "#4CC9F0",
   babel: "#7209B7",
+  meriyah: "#06D6A0",
   oxc: "#F72585",
   swc: "#3A86FF",
   yuku: "#FF6B35",
@@ -51,6 +58,7 @@ const CHART_COLORS: Record<string, string> = {
 const NAME_TO_KEY: Record<string, string> = {
   Acorn: "acorn",
   Babel: "babel",
+  Meriyah: "meriyah",
   Oxc: "oxc",
   SWC: "swc",
   Yuku: "yuku",
@@ -100,6 +108,11 @@ function formatBytes(bytes: number): string {
 
 function formatTime(ms: number): string {
   return `${ms.toFixed(2)} ms`;
+}
+
+function formatOps(meanMs: number): string {
+  const ops = 1000 / meanMs;
+  return `${ops.toFixed(2)} ops/s`;
 }
 
 async function readBenchmarkResults(fileKey: FileKey): Promise<FileResult> {
@@ -225,15 +238,29 @@ async function generateChart(entries: ParserEntry[], chartName: string): Promise
 function generateTable(entries: ParserEntry[]): string {
   const lines: string[] = [];
 
-  lines.push("| Parser | Mean | Min | Max |");
-  lines.push("|--------|------|-----|-----|");
+  const fastest = entries.find((e) => e.result != null)?.result ?? null;
+
+  lines.push("| Parser | Mean | Min | Max | Ops/sec | Relative |");
+  lines.push("|--------|------|-----|-----|---------|----------|");
 
   for (const { name, result } of entries) {
     if (!result) {
-      lines.push(`| ${name} | Failed to parse | - | - |`);
+      lines.push(`| ${name} | Failed to parse | - | - | - | - |`);
       continue;
     }
-    lines.push(`| ${name} | ${formatTime(result.mean)} | ${formatTime(result.min)} | ${formatTime(result.max)} |`);
+    const isFastest = result === fastest;
+    const ratio = fastest ? result.mean / fastest.mean : 1;
+    const relative = isFastest ? "baseline" : `${ratio.toFixed(2)}× slower`;
+    const cells = [
+      name,
+      formatTime(result.mean),
+      formatTime(result.min),
+      formatTime(result.max),
+      formatOps(result.mean),
+      relative,
+    ];
+    const row = isFastest ? cells.map((c) => `**${c}**`).join(" | ") : cells.join(" | ");
+    lines.push(`| ${row} |`);
   }
 
   return lines.join("\n");

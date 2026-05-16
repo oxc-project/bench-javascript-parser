@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { Bench } from "tinybench";
 import * as acorn from "acorn";
 import * as babel from "@babel/parser";
+import * as meriyah from "meriyah";
 import * as oxc from "oxc-parser";
 import swc from "@swc/core";
 import type { ParseOptions as SwcParseOptions } from "@swc/types";
@@ -40,6 +41,12 @@ async function benchFile(fileKey: string, file: { path: string; lang: Lang }): P
   if (!isTsx) {
     bench.add("Acorn", () => {
       const { body: _ } = acorn.parse(source, { ecmaVersion: "latest", sourceType: "module" });
+    });
+  }
+
+  if (!isTsx) {
+    bench.add("Meriyah", () => {
+      const { body: _ } = meriyah.parse(source, { sourceType: "module", next: true });
     });
   }
 

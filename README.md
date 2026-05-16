@@ -21,6 +21,10 @@ A tiny, fast JavaScript parser, written completely in JavaScript.
 
 A JavaScript compiler and parser used by the Babel toolchain.
 
+### [Meriyah](https://github.com/meriyah/meriyah)
+
+A 100% compliant, self-hosted JavaScript parser with a high focus on both performance and stability.
+
 ### [Oxc](https://github.com/oxc-project/oxc)
 
 A high-performance JavaScript and TypeScript parser written in Rust.
@@ -41,13 +45,14 @@ A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zi
 
 ![Bar chart comparing npm parser speeds for typescript.js](charts/typescript.png)
 
-| Parser | Mean | Min | Max |
-|--------|------|-----|-----|
-| Yuku | 32.70 ms | 30.44 ms | 42.89 ms |
-| Acorn | 150.07 ms | 136.27 ms | 225.13 ms |
-| Babel | 185.05 ms | 153.91 ms | 238.91 ms |
-| Oxc | 272.28 ms | 260.07 ms | 333.32 ms |
-| SWC | 496.69 ms | 458.67 ms | 657.86 ms |
+| Parser | Mean | Min | Max | Ops/sec | Relative |
+|--------|------|-----|-----|---------|----------|
+| **Yuku** | **32.18 ms** | **29.93 ms** | **43.08 ms** | **31.08 ops/s** | **baseline** |
+| Meriyah | 70.22 ms | 61.17 ms | 104.09 ms | 14.24 ops/s | 2.18× slower |
+| Acorn | 138.86 ms | 124.86 ms | 190.39 ms | 7.20 ops/s | 4.32× slower |
+| Babel | 179.30 ms | 146.71 ms | 231.26 ms | 5.58 ops/s | 5.57× slower |
+| Oxc | 277.43 ms | 262.07 ms | 474.87 ms | 3.60 ops/s | 8.62× slower |
+| SWC | 485.65 ms | 462.44 ms | 574.26 ms | 2.06 ops/s | 15.09× slower |
 
 ### [calcom.tsx](https://raw.githubusercontent.com/yuku-toolchain/parser-benchmark-files/refs/heads/main/calcom.tsx)
 
@@ -55,13 +60,14 @@ A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zi
 
 ![Bar chart comparing npm parser speeds for calcom.tsx](charts/calcom.png)
 
-| Parser | Mean | Min | Max |
-|--------|------|-----|-----|
-| Yuku | 6.55 ms | 5.78 ms | 54.35 ms |
-| Babel | 44.72 ms | 32.16 ms | 123.01 ms |
-| Oxc | 58.54 ms | 54.45 ms | 91.28 ms |
-| SWC | 72.21 ms | 68.08 ms | 126.57 ms |
-| Acorn | Failed to parse | - | - |
+| Parser | Mean | Min | Max | Ops/sec | Relative |
+|--------|------|-----|-----|---------|----------|
+| **Yuku** | **6.82 ms** | **5.76 ms** | **31.67 ms** | **146.68 ops/s** | **baseline** |
+| Babel | 40.47 ms | 32.98 ms | 49.34 ms | 24.71 ops/s | 5.94× slower |
+| Oxc | 56.88 ms | 54.49 ms | 63.65 ms | 17.58 ops/s | 8.34× slower |
+| SWC | 73.17 ms | 68.06 ms | 117.27 ms | 13.67 ops/s | 10.73× slower |
+| Acorn | Failed to parse | - | - | - | - |
+| Meriyah | Failed to parse | - | - | - | - |
 
 ### [react.js](https://raw.githubusercontent.com/yuku-toolchain/parser-benchmark-files/refs/heads/main/react.js)
 
@@ -69,13 +75,14 @@ A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zi
 
 ![Bar chart comparing npm parser speeds for react.js](charts/react.png)
 
-| Parser | Mean | Min | Max |
-|--------|------|-----|-----|
-| Yuku | 0.25 ms | 0.21 ms | 5.86 ms |
-| Acorn | 1.02 ms | 0.94 ms | 9.46 ms |
-| Oxc | 1.56 ms | 1.48 ms | 7.15 ms |
-| Babel | 1.61 ms | 1.17 ms | 18.15 ms |
-| SWC | 2.93 ms | 2.76 ms | 45.60 ms |
+| Parser | Mean | Min | Max | Ops/sec | Relative |
+|--------|------|-----|-----|---------|----------|
+| **Yuku** | **0.25 ms** | **0.21 ms** | **6.51 ms** | **4031.08 ops/s** | **baseline** |
+| Meriyah | 0.53 ms | 0.42 ms | 16.97 ms | 1897.67 ops/s | 2.12× slower |
+| Acorn | 1.01 ms | 0.93 ms | 20.67 ms | 990.06 ops/s | 4.07× slower |
+| Oxc | 1.56 ms | 1.50 ms | 7.78 ms | 641.47 ops/s | 6.28× slower |
+| Babel | 1.57 ms | 1.15 ms | 8.15 ms | 636.35 ops/s | 6.33× slower |
+| SWC | 2.90 ms | 2.77 ms | 8.41 ms | 344.84 ops/s | 11.69× slower |
 
 ## Run Benchmarks
 
