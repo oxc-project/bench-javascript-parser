@@ -5,7 +5,7 @@
   "scripts": {
     "bench": "bun scripts/load-files.ts && bun scripts/bench.ts && bun readme",
     "bench:typescript": "bun scripts/bench.ts typescript",
-    "bench:calcom": "bun scripts/bench.ts calcom",
+    "bench:checker": "bun scripts/bench.ts checker",
     "bench:react": "bun scripts/bench.ts react",
     "readme": "bun scripts/generate-readme.ts",
     "update-parsers": "bun update --latest --force",

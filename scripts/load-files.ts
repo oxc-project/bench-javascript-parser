@@ -13,8 +13,15 @@ console.log("\nDownloading files...");
 
 Bun.spawnSync({
   cmd: [
-    "git", "clone", "--quiet", "--no-progress", "--single-branch", "--depth", "1",
-    REPO_URL, DEST,
+    "git",
+    "clone",
+    "--quiet",
+    "--no-progress",
+    "--single-branch",
+    "--depth",
+    "1",
+    REPO_URL,
+    DEST,
   ],
 });
 

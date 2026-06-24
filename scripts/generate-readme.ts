@@ -10,20 +10,17 @@ const FILES_SOURCE_URL_PREFIX =
 const PARSERS = {
   acorn: {
     name: "Acorn",
-    description:
-      "A tiny, fast JavaScript parser, written completely in JavaScript.",
+    description: "A tiny, fast JavaScript parser, written completely in JavaScript.",
     url: "https://github.com/acornjs/acorn",
   },
   babel: {
     name: "Babel",
-    description:
-      "A JavaScript compiler and parser used by the Babel toolchain.",
+    description: "A JavaScript compiler and parser used by the Babel toolchain.",
     url: "https://github.com/babel/babel/tree/main/packages/babel-parser",
   },
   oxc: {
     name: "Oxc",
-    description:
-      "A high-performance JavaScript and TypeScript parser written in Rust.",
+    description: "A high-performance JavaScript and TypeScript parser written in Rust.",
     url: "https://github.com/oxc-project/oxc",
   },
   swc: {
@@ -61,9 +58,9 @@ const FILES = {
     path: "files/typescript.js",
     source_url: `${FILES_SOURCE_URL_PREFIX}/typescript.js`,
   },
-  calcom: {
-    path: "files/calcom.tsx",
-    source_url: `${FILES_SOURCE_URL_PREFIX}/calcom.tsx`,
+  checker: {
+    path: "files/checker.ts",
+    source_url: `${FILES_SOURCE_URL_PREFIX}/checker.ts`,
   },
   react: {
     path: "files/react.js",
@@ -307,7 +304,8 @@ function getSystemInfo(): string {
   const os = platform();
   const osArch = arch();
   const osRelease = release();
-  const osName = os === "darwin" ? "macOS" : os === "win32" ? "Windows" : os === "linux" ? "Linux" : os;
+  const osName =
+    os === "darwin" ? "macOS" : os === "win32" ? "Windows" : os === "linux" ? "Linux" : os;
 
   return `## System
 

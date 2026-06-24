@@ -9,11 +9,6 @@
     "forceConsistentCasingInFileNames": true,
     "types": ["bun"]
   },
-  "include": [
-    "**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "**/*.js"
-  ]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "**/*.js", "files/"]
 }
