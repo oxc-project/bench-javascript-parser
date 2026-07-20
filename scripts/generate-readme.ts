@@ -322,7 +322,7 @@ function generateRunSection(): string {
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) - JavaScript runtime and package manager
+- [Node.js 22.18 or later](https://nodejs.org/) - JavaScript runtime
 
 ### Steps
 
@@ -336,13 +336,13 @@ cd ecmascript-parser-benchmark-js
 2. Install dependencies:
 
 \`\`\`bash
-bun install
+npm install
 \`\`\`
 
 3. Run benchmarks:
 
 \`\`\`bash
-bun bench
+npm run bench
 \`\`\`
 
 This will run benchmarks on all test files. Results are saved to the \`result/\` directory.`;
@@ -355,9 +355,7 @@ Each parser is benchmarked using [Tinybench](https://github.com/tinylibs/tinyben
 
 Native parsers (Oxc, SWC, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
 
-**Why is Oxc slower than Babel?** Oxc's npm package serializes the AST to a JSON string on the Rust side, then calls \`JSON.parse\` on the JavaScript side to make it available. This overhead makes it slower in end-to-end benchmarks, even though Oxc is very fast at raw parsing speed. If you only call the \`parse\` function without accessing the result, Oxc appears faster than Babel because the \`program\` field is a getter that defers \`JSON.parse\` until access. The benchmarks above measure the time to actually obtain the full AST for all parsers.
-
-Oxc also has an \`experimentalRawTransfer\` option that makes \`oxc-parser\` roughly 2-3x faster than the results shown above. In practice it is unusable today. It only works in Node.js, so Bun and Deno are out, and it allocates gigabytes of memory upfront for a single parse. That blows up with out-of-memory errors on many systems and falls apart when parsing files in parallel.
+**How is Oxc's AST transferred?** This benchmark enables Oxc's \`experimentalRawTransfer\` option, which transfers the AST through a raw buffer instead of serializing it to JSON and calling \`JSON.parse\` in JavaScript. The option reserves a large virtual-memory buffer and is only available on supported platforms. The benchmark accesses the \`program\` field so that it measures the time required to obtain the complete AST.
 
 **Why is Yuku fast?** Yuku's AST is designed from the ground up to be transfer-friendly: flat, compact, and near-binary. Instead of serializing to JSON and parsing it back, the AST produced by the Zig parser can be passed to JavaScript with minimal conversion. Zig's comptime makes this safe by design. There are no multi-gigabyte allocations, only the memory the source being parsed actually needs.`;
 }
