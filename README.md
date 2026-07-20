@@ -6,10 +6,10 @@ Benchmarks for ECMAScript parsers available as npm packages, including pure Java
 
 | Property | Value |
 |----------|-------|
-| OS | macOS 24.6.0 (arm64) |
-| CPU | Apple M3 |
-| Cores | 8 |
-| Memory | 16 GB |
+| OS | macOS 23.1.0 (arm64) |
+| CPU | Apple M3 Max |
+| Cores | 14 |
+| Memory | 36 GB |
 
 ## Parsers
 
@@ -43,11 +43,11 @@ A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zi
 
 | Parser | Mean | Min | Max | Ops/sec | Relative |
 |--------|------|-----|-----|---------|----------|
-| **Yuku** | **49.03 ms** | **45.02 ms** | **102.32 ms** | **20.40 ops/s** | **baseline** |
-| Acorn | 133.25 ms | 123.62 ms | 148.70 ms | 7.50 ops/s | 2.72× slower |
-| Babel | 184.12 ms | 152.91 ms | 224.53 ms | 5.43 ops/s | 3.76× slower |
-| Oxc | 265.42 ms | 261.03 ms | 275.68 ms | 3.77 ops/s | 5.41× slower |
-| SWC | 480.21 ms | 465.34 ms | 565.78 ms | 2.08 ops/s | 9.79× slower |
+| **Yuku** | **74.65 ms** | **59.67 ms** | **122.68 ms** | **13.40 ops/s** | **baseline** |
+| Oxc | 76.55 ms | 55.20 ms | 584.25 ms | 13.06 ops/s | 1.03× slower |
+| Acorn | 204.48 ms | 192.26 ms | 232.11 ms | 4.89 ops/s | 2.74× slower |
+| Babel | 221.04 ms | 204.55 ms | 315.08 ms | 4.52 ops/s | 2.96× slower |
+| SWC | 769.75 ms | 621.64 ms | 1499.31 ms | 1.30 ops/s | 10.31× slower |
 
 ### [checker.ts](https://raw.githubusercontent.com/yuku-toolchain/parser-benchmark-files/refs/heads/main/checker.ts)
 
@@ -57,10 +57,10 @@ A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zi
 
 | Parser | Mean | Min | Max | Ops/sec | Relative |
 |--------|------|-----|-----|---------|----------|
-| **Yuku** | **17.66 ms** | **16.42 ms** | **37.12 ms** | **56.63 ops/s** | **baseline** |
-| Babel | 80.09 ms | 65.20 ms | 94.96 ms | 12.49 ops/s | 4.54× slower |
-| Oxc | 82.93 ms | 81.01 ms | 90.72 ms | 12.06 ops/s | 4.70× slower |
-| SWC | 157.58 ms | 154.19 ms | 197.62 ms | 6.35 ops/s | 8.92× slower |
+| **Oxc** | **25.26 ms** | **20.67 ms** | **52.77 ms** | **39.58 ops/s** | **baseline** |
+| Yuku | 29.25 ms | 24.33 ms | 61.56 ms | 34.19 ops/s | 1.16× slower |
+| Babel | 75.76 ms | 68.80 ms | 87.94 ms | 13.20 ops/s | 3.00× slower |
+| SWC | 202.07 ms | 190.07 ms | 245.68 ms | 4.95 ops/s | 8.00× slower |
 | Acorn | Failed to parse | - | - | - | - |
 
 ### [react.js](https://raw.githubusercontent.com/yuku-toolchain/parser-benchmark-files/refs/heads/main/react.js)
@@ -71,17 +71,18 @@ A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zi
 
 | Parser | Mean | Min | Max | Ops/sec | Relative |
 |--------|------|-----|-----|---------|----------|
-| **Yuku** | **0.33 ms** | **0.31 ms** | **4.77 ms** | **3038.30 ops/s** | **baseline** |
-| Acorn | 0.98 ms | 0.95 ms | 4.63 ms | 1024.94 ops/s | 2.96× slower |
-| Babel | 1.35 ms | 1.14 ms | 3.45 ms | 738.32 ops/s | 4.12× slower |
-| Oxc | 1.52 ms | 1.48 ms | 2.80 ms | 659.00 ops/s | 4.61× slower |
-| SWC | 2.86 ms | 2.79 ms | 6.95 ms | 349.06 ops/s | 8.70× slower |
+| **Yuku** | **0.45 ms** | **0.37 ms** | **5.51 ms** | **2245.55 ops/s** | **baseline** |
+| Oxc | 0.49 ms | 0.31 ms | 30.44 ms | 2027.78 ops/s | 1.11× slower |
+| Babel | 1.03 ms | 0.95 ms | 1.83 ms | 971.94 ops/s | 2.31× slower |
+| Acorn | 1.27 ms | 1.21 ms | 7.81 ms | 784.54 ops/s | 2.86× slower |
+| SWC | 3.97 ms | 3.73 ms | 6.78 ms | 251.77 ops/s | 8.92× slower |
 
 ## Run Benchmarks
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) - JavaScript runtime and package manager
+- [Node.js 22.18 or later](https://nodejs.org/) - JavaScript runtime
+- [pnpm 10.33.2](https://pnpm.io/) - Package manager
 
 ### Steps
 
@@ -95,13 +96,13 @@ cd ecmascript-parser-benchmark-js
 2. Install dependencies:
 
 ```bash
-bun install
+pnpm install
 ```
 
 3. Run benchmarks:
 
 ```bash
-bun bench
+pnpm run bench
 ```
 
 This will run benchmarks on all test files. Results are saved to the `result/` directory.
@@ -112,8 +113,14 @@ Each parser is benchmarked using [Tinybench](https://github.com/tinylibs/tinyben
 
 Native parsers (Oxc, SWC, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
 
-**Why is Oxc slower than Babel?** Oxc's npm package serializes the AST to a JSON string on the Rust side, then calls `JSON.parse` on the JavaScript side to make it available. This overhead makes it slower in end-to-end benchmarks, even though Oxc is very fast at raw parsing speed. If you only call the `parse` function without accessing the result, Oxc appears faster than Babel because the `program` field is a getter that defers `JSON.parse` until access. The benchmarks above measure the time to actually obtain the full AST for all parsers.
+### Oxc raw transfer
 
-Oxc also has an `experimentalRawTransfer` option that makes `oxc-parser` roughly 2-3x faster than the results shown above. In practice it is unusable today. It only works in Node.js, so Bun and Deno are out, and it allocates gigabytes of memory upfront for a single parse. That blows up with out-of-memory errors on many systems and falls apart when parsing files in parallel.
+By default, `oxc-parser` serializes the AST to a JSON string in Rust and parses that string when JavaScript accesses the `program` property. This benchmark enables `experimentalRawTransfer`, which writes the Rust AST into a raw buffer and uses a generated JavaScript deserializer to construct the final AST directly. It avoids JSON serialization, the intermediate string, and `JSON.parse`, but still includes JavaScript object construction in the measured time.
+
+For this benchmark, raw transfer requires Node.js 22.18 or later on a 64-bit, little-endian platform. The benchmark checks support before starting and fails with an explicit error on unsupported platforms.
+
+The implementation reserves a 6 GiB `ArrayBuffer` to obtain a 2 GiB block aligned on a 4 GiB boundary. On systems with virtual memory, this reserves address space rather than consuming 6 GiB of physical memory. These benchmarks call `parseSync` sequentially, allowing Oxc to reuse a cached buffer; concurrent parsing can reserve multiple buffers and therefore requires substantially more virtual address space.
+
+The benchmark accesses `program` for every parser so that results include obtaining the complete AST. Consequently, the Oxc numbers represent the experimental raw-transfer path and should not be interpreted as the performance of `oxc-parser` with its default options.
 
 **Why is Yuku fast?** Yuku's AST is designed from the ground up to be transfer-friendly: flat, compact, and near-binary. Instead of serializing to JSON and parsing it back, the AST produced by the Zig parser can be passed to JavaScript with minimal conversion. Zig's comptime makes this safe by design. There are no multi-gigabyte allocations, only the memory the source being parsed actually needs.

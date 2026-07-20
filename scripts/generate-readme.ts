@@ -322,7 +322,8 @@ function generateRunSection(): string {
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) - JavaScript runtime and package manager
+- [Node.js 22.18 or later](https://nodejs.org/) - JavaScript runtime
+- [pnpm 10.33.2](https://pnpm.io/) - Package manager
 
 ### Steps
 
@@ -336,13 +337,13 @@ cd ecmascript-parser-benchmark-js
 2. Install dependencies:
 
 \`\`\`bash
-bun install
+pnpm install
 \`\`\`
 
 3. Run benchmarks:
 
 \`\`\`bash
-bun bench
+pnpm run bench
 \`\`\`
 
 This will run benchmarks on all test files. Results are saved to the \`result/\` directory.`;
@@ -355,9 +356,15 @@ Each parser is benchmarked using [Tinybench](https://github.com/tinylibs/tinyben
 
 Native parsers (Oxc, SWC, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
 
-**Why is Oxc slower than Babel?** Oxc's npm package serializes the AST to a JSON string on the Rust side, then calls \`JSON.parse\` on the JavaScript side to make it available. This overhead makes it slower in end-to-end benchmarks, even though Oxc is very fast at raw parsing speed. If you only call the \`parse\` function without accessing the result, Oxc appears faster than Babel because the \`program\` field is a getter that defers \`JSON.parse\` until access. The benchmarks above measure the time to actually obtain the full AST for all parsers.
+### Oxc raw transfer
 
-Oxc also has an \`experimentalRawTransfer\` option that makes \`oxc-parser\` roughly 2-3x faster than the results shown above. In practice it is unusable today. It only works in Node.js, so Bun and Deno are out, and it allocates gigabytes of memory upfront for a single parse. That blows up with out-of-memory errors on many systems and falls apart when parsing files in parallel.
+By default, \`oxc-parser\` serializes the AST to a JSON string in Rust and parses that string when JavaScript accesses the \`program\` property. This benchmark enables \`experimentalRawTransfer\`, which writes the Rust AST into a raw buffer and uses a generated JavaScript deserializer to construct the final AST directly. It avoids JSON serialization, the intermediate string, and \`JSON.parse\`, but still includes JavaScript object construction in the measured time.
+
+For this benchmark, raw transfer requires Node.js 22.18 or later on a 64-bit, little-endian platform. The benchmark checks support before starting and fails with an explicit error on unsupported platforms.
+
+The implementation reserves a 6 GiB \`ArrayBuffer\` to obtain a 2 GiB block aligned on a 4 GiB boundary. On systems with virtual memory, this reserves address space rather than consuming 6 GiB of physical memory. These benchmarks call \`parseSync\` sequentially, allowing Oxc to reuse a cached buffer; concurrent parsing can reserve multiple buffers and therefore requires substantially more virtual address space.
+
+The benchmark accesses \`program\` for every parser so that results include obtaining the complete AST. Consequently, the Oxc numbers represent the experimental raw-transfer path and should not be interpreted as the performance of \`oxc-parser\` with its default options.
 
 **Why is Yuku fast?** Yuku's AST is designed from the ground up to be transfer-friendly: flat, compact, and near-binary. Instead of serializing to JSON and parsing it back, the AST produced by the Zig parser can be passed to JavaScript with minimal conversion. Zig's comptime makes this safe by design. There are no multi-gigabyte allocations, only the memory the source being parsed actually needs.`;
 }

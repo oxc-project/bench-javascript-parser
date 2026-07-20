@@ -14,6 +14,10 @@ const FILES: Record<string, { path: string; lang: SourceLang }> = {
   react: { path: "files/react.js", lang: "js" },
 };
 
+const OXC_OPTIONS = { experimentalRawTransfer: true } as oxc.ParserOptions & {
+  experimentalRawTransfer: true;
+};
+
 interface BenchResult {
   name: string;
   mean: number;
@@ -58,7 +62,7 @@ async function benchFile(
 
   const oxcFilename = isJsx ? "bench.tsx" : isTs ? "bench.ts" : "bench.js";
   bench.add("Oxc", () => {
-    const { program: _ } = oxc.parseSync(oxcFilename, source);
+    const { program: _ } = oxc.parseSync(oxcFilename, source, OXC_OPTIONS);
   });
 
   const swcSyntax: SwcParseOptions = isTs
@@ -96,6 +100,10 @@ async function benchFile(
 }
 
 async function main() {
+  if (!oxc.rawTransferSupported()) {
+    throw new Error("Oxc raw transfer is not supported on this platform");
+  }
+
   const targetFiles = process.argv.slice(2);
   const filesToBench =
     targetFiles.length > 0

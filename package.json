@@ -2,13 +2,17 @@
   "name": "ecmascript-parser-benchmark-js",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
-    "bench": "bun scripts/load-files.ts && bun scripts/bench.ts && bun readme",
-    "bench:typescript": "bun scripts/bench.ts typescript",
-    "bench:checker": "bun scripts/bench.ts checker",
-    "bench:react": "bun scripts/bench.ts react",
-    "readme": "bun scripts/generate-readme.ts",
-    "update-parsers": "bun update --latest --force",
+    "bench": "node scripts/load-files.ts && node scripts/bench.ts && pnpm run readme",
+    "bench:typescript": "node scripts/bench.ts typescript",
+    "bench:checker": "node scripts/bench.ts checker",
+    "bench:react": "node scripts/bench.ts react",
+    "readme": "node scripts/generate-readme.ts",
+    "update-parsers": "pnpm update --latest",
     "type-check": "tsgo --noEmit"
   },
   "dependencies": {
@@ -22,11 +26,13 @@
     "yuku-parser": "^0.5.42"
   },
   "devDependencies": {
-    "@types/bun": "^1.3.14",
     "@types/node": "^26.0.0",
     "@typescript/native-preview": "^7.0.0-dev.20260624.1"
   },
   "peerDependencies": {
     "typescript": "^6.0.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@swc/core", "canvas"]
   }
 }
