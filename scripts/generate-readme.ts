@@ -323,6 +323,7 @@ function generateRunSection(): string {
 ### Prerequisites
 
 - [Node.js 22.18 or later](https://nodejs.org/) - JavaScript runtime
+- [pnpm 10.33.2](https://pnpm.io/) - Package manager
 
 ### Steps
 
@@ -336,13 +337,13 @@ cd ecmascript-parser-benchmark-js
 2. Install dependencies:
 
 \`\`\`bash
-npm install
+pnpm install
 \`\`\`
 
 3. Run benchmarks:
 
 \`\`\`bash
-npm run bench
+pnpm run bench
 \`\`\`
 
 This will run benchmarks on all test files. Results are saved to the \`result/\` directory.`;

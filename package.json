@@ -5,14 +5,14 @@
   "engines": {
     "node": ">=22.18.0"
   },
-  "packageManager": "npm@11.13.0",
+  "packageManager": "pnpm@10.33.2",
   "scripts": {
-    "bench": "node scripts/load-files.ts && node scripts/bench.ts && npm run readme",
+    "bench": "node scripts/load-files.ts && node scripts/bench.ts && pnpm run readme",
     "bench:typescript": "node scripts/bench.ts typescript",
     "bench:checker": "node scripts/bench.ts checker",
     "bench:react": "node scripts/bench.ts react",
     "readme": "node scripts/generate-readme.ts",
-    "update-parsers": "npm update --save",
+    "update-parsers": "pnpm update --latest",
     "type-check": "tsgo --noEmit"
   },
   "dependencies": {
@@ -31,5 +31,8 @@
   },
   "peerDependencies": {
     "typescript": "^6.0.3"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@swc/core", "canvas"]
   }
 }
