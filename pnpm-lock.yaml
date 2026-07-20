@@ -30,7 +30,7 @@ importers:
         specifier: ^6.0.2
         version: 6.0.2
       typescript:
-        specifier: ^6.0.3
+        specifier: ^6.0.3 || ^7.0.0
         version: 6.0.3
       yuku-parser:
         specifier: ^0.5.42

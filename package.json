@@ -30,7 +30,7 @@
     "@typescript/native-preview": "^7.0.0-dev.20260624.1"
   },
   "peerDependencies": {
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3 || ^7.0.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": ["@swc/core", "canvas"]
