@@ -21,7 +21,7 @@
     "acorn": "^8.17.0",
     "chart.js": "^4.5.1",
     "chartjs-node-canvas": "^5.0.0",
-    "oxc-parser": "^0.137.0",
+    "oxc-parser": "^0.140.0",
     "tinybench": "^6.0.2",
     "yuku-parser": "^0.5.42"
   },
