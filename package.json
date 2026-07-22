@@ -16,23 +16,26 @@
     "type-check": "tsgo --noEmit"
   },
   "dependencies": {
-    "@babel/parser": "^8.0.0",
-    "@swc/core": "^1.15.43",
+    "@babel/parser": "^8.0.4",
+    "@swc/core": "^1.15.46",
     "acorn": "^8.17.0",
     "chart.js": "^4.5.1",
     "chartjs-node-canvas": "^5.0.0",
-    "oxc-parser": "^0.140.0",
+    "oxc-parser": "^0.141.0",
     "tinybench": "^6.0.2",
-    "yuku-parser": "^0.5.42"
+    "yuku-parser": "^0.7.3"
   },
   "devDependencies": {
-    "@types/node": "^26.0.0",
-    "@typescript/native-preview": "^7.0.0-dev.20260624.1"
+    "@types/node": "^26.1.1",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2"
   },
   "peerDependencies": {
     "typescript": "^6.0.3"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@swc/core", "canvas"]
+    "onlyBuiltDependencies": [
+      "@swc/core",
+      "canvas"
+    ]
   }
 }
