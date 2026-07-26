@@ -23,7 +23,7 @@
     "chartjs-node-canvas": "^5.0.0",
     "oxc-parser": "^0.141.0",
     "tinybench": "^6.0.2",
-    "yuku-parser": "^0.7.3"
+    "yuku-parser": "^0.8.0"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
