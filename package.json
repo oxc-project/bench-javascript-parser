@@ -5,7 +5,7 @@
   "engines": {
     "node": ">=22.18.0"
   },
-  "packageManager": "pnpm@10.34.5",
+  "packageManager": "pnpm@11.17.0",
   "scripts": {
     "bench": "node scripts/load-files.ts && node scripts/bench.ts && pnpm run readme",
     "bench:typescript": "node scripts/bench.ts typescript",
