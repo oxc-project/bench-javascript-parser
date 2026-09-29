@@ -96,6 +96,10 @@ async function benchFile(
     });
   }
 
+  if (results.length !== bench.tasks.length) {
+    throw new Error(`Only ${results.length} of ${bench.tasks.length} parsers completed ${fileKey}`);
+  }
+
   return { file: fileKey, results };
 }
 
@@ -120,4 +124,7 @@ async function main() {
   console.log("\nBenchmark complete!");
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});

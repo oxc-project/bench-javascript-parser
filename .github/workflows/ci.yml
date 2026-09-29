@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: ${{ github.ref_name != 'main' }}
+
+jobs:
+  benchmark:
+    name: Parser benchmarks
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          persist-credentials: false
+      - uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
+        with:
+          version: "0.3.3"
+          node-version: "24"
+          cache: true
+          run-install: false
+      - run: vp install --frozen-lockfile --ignore-scripts
+      - run: node scripts/load-files.ts
+      - run: node -e 'for (const file of ["typescript", "checker", "react"]) require("node:fs").unlinkSync("result/" + file + ".json")'
+      - run: node scripts/bench.ts
+      - name: Show benchmark results
+        if: always()
+        run: node scripts/ci-summary.ts >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        if: always()
+        with:
+          name: parser-benchmark-results
+          path: result/*.json
+          if-no-files-found: ignore
