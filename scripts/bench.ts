@@ -4,9 +4,11 @@ import { Bench } from "tinybench";
 import * as acorn from "acorn";
 import * as babel from "@babel/parser";
 import * as oxc from "oxc-parser";
+import * as oxbox from "oxbox";
 import swc from "@swc/core";
-import type { ParseOptions as SwcParseOptions } from "@swc/types";
 import { parse as yukuParseSync, type SourceLang } from "yuku-parser";
+
+type SwcParseOptions = NonNullable<Parameters<typeof swc.parseSync>[1]>;
 
 const FILES: Record<string, { path: string; lang: SourceLang }> = {
   typescript: { path: "files/typescript.js", lang: "js" },
@@ -61,8 +63,14 @@ async function benchFile(
   });
 
   const oxcFilename = isJsx ? "bench.tsx" : isTs ? "bench.ts" : "bench.js";
-  bench.add("Oxc", () => {
+  bench.add("Oxc (default)", () => {
+    const { program: _ } = oxc.parseSync(oxcFilename, source);
+  });
+  bench.add("Oxc (raw transfer)", () => {
     const { program: _ } = oxc.parseSync(oxcFilename, source, OXC_OPTIONS);
+  });
+  bench.add("Oxbox (WASM)", () => {
+    const { program: _ } = oxbox.parseSync(oxcFilename, source);
   });
 
   const swcSyntax: SwcParseOptions = isTs

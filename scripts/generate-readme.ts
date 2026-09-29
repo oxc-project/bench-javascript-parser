@@ -19,9 +19,19 @@ const PARSERS = {
     url: "https://github.com/babel/babel/tree/main/packages/babel-parser",
   },
   oxc: {
-    name: "Oxc",
-    description: "A high-performance JavaScript and TypeScript parser written in Rust.",
+    name: "Oxc (raw transfer)",
+    description: "The native Oxc parser with experimental raw AST transfer enabled.",
     url: "https://github.com/oxc-project/oxc",
+  },
+  oxcDefault: {
+    name: "Oxc (default)",
+    description: "The native Oxc parser with its default AST transfer path.",
+    url: "https://github.com/oxc-project/oxc",
+  },
+  oxbox: {
+    name: "Oxbox (WASM)",
+    description: "Oxc's parser packaged as a portable WebAssembly module.",
+    url: "https://github.com/unjs/oxbox",
   },
   swc: {
     name: "SWC",
@@ -41,6 +51,8 @@ const CHART_COLORS: Record<string, string> = {
   acorn: "#4CC9F0",
   babel: "#7209B7",
   oxc: "#F72585",
+  oxcDefault: "#F78DB6",
+  oxbox: "#9D4EDD",
   swc: "#3A86FF",
   yuku: "#FF6B35",
 };
@@ -49,6 +61,9 @@ const NAME_TO_KEY: Record<string, string> = {
   Acorn: "acorn",
   Babel: "babel",
   Oxc: "oxc",
+  "Oxc (raw transfer)": "oxc",
+  "Oxc (default)": "oxcDefault",
+  "Oxbox (WASM)": "oxbox",
   SWC: "swc",
   Yuku: "yuku",
 };
@@ -354,7 +369,7 @@ function generateMethodologySection(): string {
 
 Each parser is benchmarked using [Tinybench](https://github.com/tinylibs/tinybench) with warmup iterations followed by multiple timed runs. Each run measures the time to parse the source text into an AST. Source files are read from disk once and kept in memory for all iterations.
 
-Native parsers (Oxc, SWC, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
+Native parsers (Oxc, SWC, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Oxbox runs through WebAssembly. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
 
 ### Oxc raw transfer
 
@@ -364,7 +379,7 @@ For this benchmark, raw transfer requires Node.js 22.18 or later on a 64-bit, li
 
 The implementation reserves a 6 GiB \`ArrayBuffer\` to obtain a 2 GiB block aligned on a 4 GiB boundary. On systems with virtual memory, this reserves address space rather than consuming 6 GiB of physical memory. These benchmarks call \`parseSync\` sequentially, allowing Oxc to reuse a cached buffer; concurrent parsing can reserve multiple buffers and therefore requires substantially more virtual address space.
 
-The benchmark accesses \`program\` for every parser so that results include obtaining the complete AST. Consequently, the Oxc numbers represent the experimental raw-transfer path and should not be interpreted as the performance of \`oxc-parser\` with its default options.
+The benchmark accesses \`program\` for every parser so that results include obtaining the complete AST. The Oxc (raw transfer) and Oxc (default) rows show both AST transfer paths. Oxc and Oxbox use the same underlying Oxc version.
 
 **Why is Yuku fast?** Yuku's AST is designed from the ground up to be transfer-friendly: flat, compact, and near-binary. Instead of serializing to JSON and parsing it back, the AST produced by the Zig parser can be passed to JavaScript with minimal conversion. Zig's comptime makes this safe by design. There are no multi-gigabyte allocations, only the memory the source being parsed actually needs.`;
 }
