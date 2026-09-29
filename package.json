@@ -21,7 +21,8 @@
     "acorn": "^8.17.0",
     "chart.js": "^4.5.1",
     "chartjs-node-canvas": "^5.0.0",
-    "oxc-parser": "^0.145.0",
+    "oxbox": "0.1.0",
+    "oxc-parser": "0.151.0",
     "tinybench": "^6.0.2",
     "yuku-parser": "^0.8.0"
   },
@@ -31,11 +32,5 @@
   },
   "peerDependencies": {
     "typescript": "^6.0.3 || ^7.0.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@swc/core",
-      "canvas"
-    ]
   }
 }
