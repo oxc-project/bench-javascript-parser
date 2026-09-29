@@ -23,15 +23,13 @@ jobs:
       - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
         with:
           persist-credentials: false
-      - uses: pnpm/action-setup@41ff72655975bd51cab0327fa583b6e92b6d3061 # v4.2.0
+      - uses: voidzero-dev/setup-vp@3754dd7dbdb32bd8f6d28b6043de13ad3a75f21f # v1.21.1
         with:
-          version: 11.17.0
-          run_install: false
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-        with:
-          node-version: 24
-          cache: pnpm
-      - run: pnpm install --frozen-lockfile --ignore-scripts
+          version: "0.3.3"
+          node-version: "24"
+          cache: true
+          run-install: false
+      - run: vp install --frozen-lockfile --ignore-scripts
       - run: node scripts/load-files.ts
       - run: node -e 'for (const file of ["typescript", "checker", "react"]) require("node:fs").unlinkSync("result/" + file + ".json")'
       - run: node scripts/bench.ts
