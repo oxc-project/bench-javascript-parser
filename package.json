@@ -7,7 +7,8 @@
   },
   "packageManager": "pnpm@11.17.0",
   "scripts": {
-    "bench": "node scripts/load-files.ts && node scripts/bench.ts && pnpm run readme",
+    "bench": "pnpm run bench:ci && pnpm run readme",
+    "bench:ci": "node scripts/load-files.ts && node scripts/bench.ts",
     "bench:typescript": "node scripts/bench.ts typescript",
     "bench:checker": "node scripts/bench.ts checker",
     "bench:react": "node scripts/bench.ts react",

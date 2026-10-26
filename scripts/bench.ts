@@ -5,7 +5,7 @@ import * as acorn from "acorn";
 import * as babel from "@babel/parser";
 import * as oxc from "oxc-parser";
 import swc from "@swc/core";
-import type { ParseOptions as SwcParseOptions } from "@swc/types";
+import type { ParseOptions as SwcParseOptions } from "@swc/core";
 import { parse as yukuParseSync, type SourceLang } from "yuku-parser";
 
 const FILES: Record<string, { path: string; lang: SourceLang }> = {
