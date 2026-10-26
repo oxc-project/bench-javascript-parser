@@ -1,0 +1,5 @@
+allowBuilds:
+  '@swc/core': true
+  canvas: true
+minimumReleaseAgeExclude:
+  - oxbox@0.1.0
