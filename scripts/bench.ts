@@ -5,7 +5,7 @@ import * as acorn from "acorn";
 import * as babel from "@babel/parser";
 import * as oxc from "oxc-parser";
 import swc from "@swc/core";
-import type { ParseOptions as SwcParseOptions } from "@swc/types";
+import type { ParseOptions as SwcParseOptions } from "@swc/core";
 import { parse as yukuParseSync, type SourceLang } from "yuku-parser";
 
 const FILES: Record<string, { path: string; lang: SourceLang }> = {
@@ -96,6 +96,10 @@ async function benchFile(
     });
   }
 
+  if (results.length !== bench.tasks.length) {
+    throw new Error(`Only ${results.length} of ${bench.tasks.length} parsers completed ${fileKey}`);
+  }
+
   return { file: fileKey, results };
 }
 
@@ -120,4 +124,7 @@ async function main() {
   console.log("\nBenchmark complete!");
 }
 
-main().catch(console.error);
+main().catch((error) => {
+  console.error(error);
+  process.exitCode = 1;
+});
