@@ -31,7 +31,7 @@ An extensible Rust-based platform for compiling and bundling JavaScript and Type
 
 ### [Yuku](https://github.com/yuku-toolchain/yuku)
 
-A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zig, available as the [yuku](https://www.npmjs.com/package/yuku) npm package.
+A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zig.
 
 ## Benchmarks
 
