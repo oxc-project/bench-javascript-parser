@@ -25,7 +25,7 @@
     "oxbox": "0.1.0",
     "oxc-parser": "0.151.0",
     "tinybench": "^6.0.2",
-    "yuku-parser": "^0.19.0"
+    "yuku": "^0.23.0"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",
