@@ -42,7 +42,7 @@ const PARSERS = {
   yuku: {
     name: "Yuku",
     description:
-      "A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zig, available as the [yuku](https://www.npmjs.com/package/yuku) npm package.",
+      "A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zig.",
     url: "https://github.com/yuku-toolchain/yuku",
   },
 } as const;
