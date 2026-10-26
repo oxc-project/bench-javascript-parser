@@ -7,7 +7,7 @@ import * as oxc from "oxc-parser";
 import * as oxbox from "oxbox";
 import swc from "@swc/core";
 import type { ParseOptions as SwcParseOptions } from "@swc/core";
-import { parse as yukuParseSync, type SourceLang } from "yuku-parser";
+import { parse as yukuParseSync, type SourceLang } from "yuku";
 
 const FILES: Record<string, { path: string; lang: SourceLang }> = {
   typescript: { path: "files/typescript.js", lang: "js" },
