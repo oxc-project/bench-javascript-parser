@@ -51,77 +51,77 @@ A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zi
 
 **File size:** 7.83 MB
 
-**Configuration:** 3 runs, 1000 ms per run, 250 ms warmup.
+**Configuration:** 3 runs, 10000 ms per run, 2000 ms warmup.
 
 ![Bar chart comparing npm parser speeds for typescript.js](charts/typescript.svg)
 
 | Parser | Median | RME | Mean | Min | Max | Ops/sec | Relative |
 |--------|--------|-----|------|-----|-----|---------|----------|
-| **SWC Next** | **42.63 ms** | **±7.46%** | **53.10 ms** | **38.70 ms** | **80.52 ms** | **23.46 ops/s** | **baseline** |
-| Yuku | 55.87 ms | ±5.20% | 62.86 ms | 49.38 ms | 92.03 ms | 17.90 ops/s | 1.31× slower |
-| Oxc (raw transfer) | 58.78 ms | ±4.86% | 59.69 ms | 44.97 ms | 106.93 ms | 17.01 ops/s | 1.38× slower |
-| Acorn | 208.40 ms | ±1.32% | 211.53 ms | 196.29 ms | 251.12 ms | 4.80 ops/s | 4.89× slower |
-| Babel | 216.01 ms | ±1.71% | 221.63 ms | 203.00 ms | 294.95 ms | 4.63 ops/s | 5.07× slower |
-| Oxc (default) | 321.85 ms | ±1.79% | 329.69 ms | 306.46 ms | 384.37 ms | 3.11 ops/s | 7.55× slower |
-| Oxbox (WASM) | 357.39 ms | ±0.13% | 357.79 ms | 350.70 ms | 371.99 ms | 2.80 ops/s | 8.38× slower |
-| SWC | 575.57 ms | ±0.76% | 580.33 ms | 555.32 ms | 646.53 ms | 1.74 ops/s | 13.50× slower |
+| **SWC Next** | **40.09 ms** | **±4.09%** | **50.03 ms** | **38.42 ms** | **73.09 ms** | **24.95 ops/s** | **baseline** |
+| Yuku | 53.23 ms | ±3.11% | 59.84 ms | 48.50 ms | 81.79 ms | 18.79 ops/s | 1.33× slower |
+| Oxc (raw transfer) | 58.58 ms | ±3.74% | 58.87 ms | 44.09 ms | 113.71 ms | 17.07 ops/s | 1.46× slower |
+| Acorn | 202.63 ms | ±1.32% | 205.38 ms | 190.75 ms | 246.14 ms | 4.94 ops/s | 5.05× slower |
+| Babel | 211.49 ms | ±2.11% | 218.16 ms | 200.53 ms | 288.28 ms | 4.73 ops/s | 5.28× slower |
+| Oxc (default) | 314.75 ms | ±1.75% | 324.13 ms | 303.12 ms | 370.28 ms | 3.18 ops/s | 7.85× slower |
+| Oxbox (WASM) | 351.51 ms | ±0.14% | 351.47 ms | 347.17 ms | 362.40 ms | 2.84 ops/s | 8.77× slower |
+| SWC | 562.92 ms | ±0.75% | 569.87 ms | 546.74 ms | 602.99 ms | 1.78 ops/s | 14.04× slower |
 
 ### [checker.ts](https://raw.githubusercontent.com/yuku-toolchain/parser-benchmark-files/refs/heads/main/checker.ts)
 
 **File size:** 2.95 MB
 
-**Configuration:** 3 runs, 1000 ms per run, 250 ms warmup.
+**Configuration:** 3 runs, 10000 ms per run, 2000 ms warmup.
 
 ![Bar chart comparing npm parser speeds for checker.ts](charts/checker.svg)
 
 | Parser | Median | RME | Mean | Min | Max | Ops/sec | Relative |
 |--------|--------|-----|------|-----|-----|---------|----------|
-| **Yuku** | **17.84 ms** | **±4.80%** | **19.84 ms** | **15.65 ms** | **49.18 ms** | **56.06 ops/s** | **baseline** |
-| SWC Next | 24.16 ms | ±9.11% | 27.90 ms | 17.41 ms | 55.70 ms | 41.39 ops/s | 1.35× slower |
-| Oxc (raw transfer) | 27.27 ms | ±8.22% | 32.57 ms | 21.12 ms | 97.77 ms | 36.68 ops/s | 1.53× slower |
-| Babel | 74.79 ms | ±1.71% | 74.89 ms | 68.31 ms | 96.74 ms | 13.37 ops/s | 4.19× slower |
-| Oxc (default) | 125.33 ms | ±7.21% | 138.23 ms | 102.17 ms | 298.14 ms | 7.98 ops/s | 7.03× slower |
-| Oxbox (WASM) | 133.16 ms | ±4.89% | 139.50 ms | 112.59 ms | 380.57 ms | 7.51 ops/s | 7.47× slower |
-| SWC | 184.89 ms | ±7.79% | 230.79 ms | 164.84 ms | 587.86 ms | 5.41 ops/s | 10.37× slower |
+| **Yuku** | **16.18 ms** | **±1.73%** | **17.82 ms** | **15.74 ms** | **29.90 ms** | **61.79 ops/s** | **baseline** |
+| Oxc (raw transfer) | 20.72 ms | ±3.34% | 26.29 ms | 19.55 ms | 81.84 ms | 48.27 ops/s | 1.28× slower |
+| SWC Next | 23.99 ms | ±3.61% | 26.15 ms | 16.76 ms | 50.21 ms | 41.69 ops/s | 1.48× slower |
+| Babel | 71.24 ms | ±1.25% | 72.37 ms | 64.74 ms | 93.58 ms | 14.04 ops/s | 4.40× slower |
+| Oxc (default) | 114.14 ms | ±1.54% | 110.01 ms | 98.68 ms | 126.00 ms | 8.76 ops/s | 7.05× slower |
+| Oxbox (WASM) | 126.09 ms | ±1.93% | 126.10 ms | 110.56 ms | 140.42 ms | 7.93 ops/s | 7.79× slower |
+| SWC | 162.77 ms | ±0.21% | 163.21 ms | 159.70 ms | 169.47 ms | 6.14 ops/s | 10.06× slower |
 | Acorn | Failed to parse | - | - | - | - | - | - |
 
 ### [lib.dom.d.ts](https://raw.githubusercontent.com/yuku-toolchain/parser-benchmark-files/refs/heads/main/lib.dom.d.ts)
 
 **File size:** 2.24 MB
 
-**Configuration:** 3 runs, 1000 ms per run, 250 ms warmup.
+**Configuration:** 3 runs, 10000 ms per run, 2000 ms warmup.
 
 ![Bar chart comparing npm parser speeds for lib.dom.d.ts](charts/lib_dom.svg)
 
 | Parser | Median | RME | Mean | Min | Max | Ops/sec | Relative |
 |--------|--------|-----|------|-----|-----|---------|----------|
-| **Yuku** | **7.26 ms** | **±2.73%** | **7.55 ms** | **6.42 ms** | **14.29 ms** | **137.68 ops/s** | **baseline** |
-| SWC Next | 8.00 ms | ±1.53% | 8.22 ms | 7.18 ms | 10.53 ms | 124.97 ops/s | 1.10× slower |
-| Oxc (raw transfer) | 10.45 ms | ±7.42% | 10.82 ms | 7.39 ms | 62.04 ms | 95.66 ops/s | 1.44× slower |
-| Babel | 30.89 ms | ±1.96% | 31.44 ms | 27.26 ms | 52.22 ms | 32.38 ops/s | 4.25× slower |
-| Oxc (default) | 52.63 ms | ±8.95% | 69.75 ms | 39.61 ms | 179.41 ms | 19.00 ops/s | 7.25× slower |
-| SWC | 68.76 ms | ±6.80% | 76.39 ms | 67.13 ms | 256.07 ms | 14.54 ops/s | 9.47× slower |
-| Oxbox (WASM) | 74.52 ms | ±5.30% | 75.50 ms | 43.77 ms | 121.06 ms | 13.42 ops/s | 10.26× slower |
+| **Yuku** | **6.08 ms** | **±0.67%** | **6.45 ms** | **5.88 ms** | **10.18 ms** | **164.57 ops/s** | **baseline** |
+| Oxc (raw transfer) | 7.01 ms | ±2.32% | 9.14 ms | 6.77 ms | 24.98 ms | 142.71 ops/s | 1.15× slower |
+| SWC Next | 7.13 ms | ±0.36% | 7.35 ms | 7.00 ms | 9.50 ms | 140.34 ops/s | 1.17× slower |
+| Babel | 28.43 ms | ±0.67% | 28.82 ms | 26.06 ms | 36.36 ms | 35.18 ops/s | 4.68× slower |
+| Oxc (default) | 38.85 ms | ±1.86% | 41.91 ms | 37.95 ms | 58.91 ms | 25.74 ops/s | 6.39× slower |
+| Oxbox (WASM) | 43.23 ms | ±1.51% | 46.70 ms | 42.05 ms | 56.31 ms | 23.13 ops/s | 7.11× slower |
+| SWC | 65.86 ms | ±0.08% | 65.86 ms | 64.84 ms | 67.77 ms | 15.18 ops/s | 10.84× slower |
 | Acorn | Failed to parse | - | - | - | - | - | - |
 
 ### [react.js](https://raw.githubusercontent.com/yuku-toolchain/parser-benchmark-files/refs/heads/main/react.js)
 
 **File size:** 0.07 MB
 
-**Configuration:** 3 runs, 1000 ms per run, 250 ms warmup.
+**Configuration:** 3 runs, 10000 ms per run, 2000 ms warmup.
 
 ![Bar chart comparing npm parser speeds for react.js](charts/react.svg)
 
 | Parser | Median | RME | Mean | Min | Max | Ops/sec | Relative |
 |--------|--------|-----|------|-----|-----|---------|----------|
-| **SWC Next** | **0.30 ms** | **±3.62%** | **0.44 ms** | **0.24 ms** | **6.45 ms** | **3293.08 ops/s** | **baseline** |
-| Yuku | 0.51 ms | ±0.97% | 0.57 ms | 0.34 ms | 7.52 ms | 1943.16 ops/s | 1.69× slower |
-| Oxc (raw transfer) | 0.89 ms | ±14.40% | 1.46 ms | 0.40 ms | 44.46 ms | 1124.10 ops/s | 2.93× slower |
-| Acorn | 1.54 ms | ±2.84% | 1.73 ms | 1.23 ms | 22.45 ms | 650.95 ops/s | 5.06× slower |
-| Babel | 2.03 ms | ±6.07% | 2.45 ms | 1.33 ms | 16.59 ms | 492.39 ops/s | 6.69× slower |
-| Oxbox (WASM) | 3.58 ms | ±9.72% | 5.19 ms | 2.17 ms | 36.52 ms | 279.64 ops/s | 11.78× slower |
-| SWC | 4.04 ms | ±4.91% | 5.14 ms | 3.32 ms | 14.52 ms | 247.51 ops/s | 13.30× slower |
-| Oxc (default) | 4.94 ms | ±8.90% | 5.94 ms | 2.67 ms | 52.80 ms | 202.58 ops/s | 16.26× slower |
+| **SWC Next** | **0.24 ms** | **±0.36%** | **0.26 ms** | **0.23 ms** | **2.33 ms** | **4137.22 ops/s** | **baseline** |
+| Yuku | 0.29 ms | ±0.05% | 0.29 ms | 0.28 ms | 2.00 ms | 3461.70 ops/s | 1.20× slower |
+| Oxc (raw transfer) | 0.30 ms | ±5.43% | 0.48 ms | 0.27 ms | 30.28 ms | 3316.30 ops/s | 1.25× slower |
+| Babel | 0.92 ms | ±0.14% | 0.94 ms | 0.90 ms | 1.70 ms | 1082.06 ops/s | 3.82× slower |
+| Acorn | 1.26 ms | ±0.07% | 1.27 ms | 1.25 ms | 3.26 ms | 793.60 ops/s | 5.21× slower |
+| Oxc (default) | 1.87 ms | ±1.79% | 2.03 ms | 1.82 ms | 16.88 ms | 533.74 ops/s | 7.75× slower |
+| Oxbox (WASM) | 2.19 ms | ±1.48% | 2.37 ms | 2.11 ms | 18.65 ms | 455.99 ops/s | 9.07× slower |
+| SWC | 3.35 ms | ±0.13% | 3.37 ms | 3.28 ms | 5.63 ms | 298.80 ops/s | 13.85× slower |
 
 ## Run Benchmarks
 
