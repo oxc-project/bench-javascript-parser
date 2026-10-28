@@ -39,6 +39,11 @@ const PARSERS = {
       "An extensible Rust-based platform for compiling and bundling JavaScript and TypeScript.",
     url: "https://github.com/swc-project/swc",
   },
+  swcNext: {
+    name: "SWC Next",
+    description: "A Rust rewrite of SWC with a flat, ESTree-based AST, using @swc-next/parser.",
+    url: "https://github.com/swc-project/swc-next",
+  },
   yuku: {
     name: "Yuku",
     description:
@@ -54,6 +59,7 @@ const CHART_COLORS: Record<string, string> = {
   oxcDefault: "#F78DB6",
   oxbox: "#9D4EDD",
   swc: "#3A86FF",
+  swcNext: "#06D6A0",
   yuku: "#FF6B35",
 };
 
@@ -65,6 +71,7 @@ const NAME_TO_KEY: Record<string, string> = {
   "Oxc (default)": "oxcDefault",
   "Oxbox (WASM)": "oxbox",
   SWC: "swc",
+  "SWC Next": "swcNext",
   Yuku: "yuku",
 };
 
@@ -369,7 +376,7 @@ function generateMethodologySection(): string {
 
 Each parser is benchmarked using [Tinybench](https://github.com/tinylibs/tinybench) with warmup iterations followed by multiple timed runs. Each run measures the time to parse the source text into an AST. Source files are read from disk once and kept in memory for all iterations.
 
-Native parsers (Oxc, SWC, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Oxbox runs through WebAssembly. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
+Native parsers (Oxc, SWC, SWC Next, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Oxbox runs through WebAssembly. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
 
 ### Oxc raw transfer
 
