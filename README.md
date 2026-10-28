@@ -29,6 +29,10 @@ A high-performance JavaScript and TypeScript parser written in Rust.
 
 An extensible Rust-based platform for compiling and bundling JavaScript and TypeScript.
 
+### [SWC Next](https://github.com/swc-project/swc-next)
+
+A Rust rewrite of SWC with a flat, ESTree-based AST, using @swc-next/parser.
+
 ### [Yuku](https://github.com/yuku-toolchain/yuku)
 
 A high-performance & spec-compliant JavaScript/TypeScript compiler written in Zig.
@@ -111,7 +115,7 @@ This will run benchmarks on all test files. Results are saved to the `result/` d
 
 Each parser is benchmarked using [Tinybench](https://github.com/tinylibs/tinybench) with warmup iterations followed by multiple timed runs. Each run measures the time to parse the source text into an AST. Source files are read from disk once and kept in memory for all iterations.
 
-Native parsers (Oxc, SWC, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
+Native parsers (Oxc, SWC, SWC Next, Yuku) run through their respective NAPI bindings, so measured time includes the binding overhead. Pure JS parsers (Acorn, Babel) run directly in the JavaScript runtime.
 
 ### Oxc raw transfer
 

@@ -7,6 +7,7 @@ import * as oxc from "oxc-parser";
 import * as oxbox from "oxbox";
 import swc from "@swc/core";
 import type { ParseOptions as SwcParseOptions } from "@swc/core";
+import { parseSync as swcNextParseSync } from "@swc-next/parser";
 import { parse as yukuParseSync, type SourceLang } from "yuku";
 
 const FILES: Record<string, { path: string; lang: SourceLang }> = {
@@ -77,6 +78,11 @@ async function benchFile(
     : { syntax: "ecmascript" };
   bench.add("SWC", () => {
     const { body: _ } = swc.parseSync(source, swcSyntax);
+  });
+
+  const swcNextOptions = { lang: file.lang };
+  bench.add("SWC Next", () => {
+    const { program: _ } = swcNextParseSync(source, swcNextOptions);
   });
 
   const yukuOptions = file.lang === "js" ? undefined : { lang: file.lang };
