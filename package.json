@@ -9,30 +9,30 @@
   "scripts": {
     "bench": "pnpm run bench:ci && pnpm run readme",
     "bench:ci": "node scripts/load-files.ts && node scripts/bench.ts",
+    "load-files": "node scripts/load-files.ts",
     "bench:typescript": "node scripts/bench.ts typescript",
     "bench:checker": "node scripts/bench.ts checker",
+    "bench:lib_dom": "node scripts/bench.ts lib_dom",
     "bench:react": "node scripts/bench.ts react",
     "readme": "node scripts/generate-readme.ts",
     "update-parsers": "pnpm update --latest",
     "type-check": "tsgo --noEmit"
   },
   "dependencies": {
-    "@babel/parser": "^8.0.4",
+    "@babel/parser": "^8.0.7",
     "@swc-next/parser": "^0.4.0",
-    "@swc/core": "^1.15.46",
-    "acorn": "^8.17.0",
-    "chart.js": "^4.5.1",
-    "chartjs-node-canvas": "^5.0.0",
+    "@swc/core": "^1.16.20",
+    "acorn": "^8.19.0",
     "oxbox": "0.1.0",
-    "oxc-parser": "0.151.0",
-    "tinybench": "^6.0.2",
+    "oxc-parser": "^0.155.0",
+    "tinybench": "^6.2.2",
     "yuku": "^0.23.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1",
-    "@typescript/native-preview": "7.0.0-dev.20260707.2"
+    "@types/node": "^26.6.5",
+    "@typescript/native-preview": "^7.0.0-dev.20260707.2"
   },
   "peerDependencies": {
-    "typescript": "^6.0.3 || ^7.0.0"
+    "typescript": "^7.0.2"
   }
 }
