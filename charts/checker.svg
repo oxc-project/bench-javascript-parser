@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="202" viewBox="0 0 640 202">
+  <style>
+    text { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; fill: #848d97; dominant-baseline: central; font-variant-numeric: tabular-nums }
+    .ratio { font-size: 12px; fill: #fff }
+  </style>
+  <text x="120" y="11" text-anchor="end">Yuku</text>
+  <rect x="130" y="0" width="36" height="22" rx="4" fill="#FF6B35"/>
+  <text x="174" y="11">17.84 ms</text>
+  <text x="120" y="41" text-anchor="end">SWC Next</text>
+  <rect x="130" y="30" width="49" height="22" rx="4" fill="#06D6A0"/>
+  <text x="187" y="41">24.16 ms</text>
+  <text x="252" y="41">1.35×</text>
+  <text x="120" y="71" text-anchor="end">Oxc (raw transfer)</text>
+  <rect x="130" y="60" width="55" height="22" rx="4" fill="#F72585"/>
+  <text x="193" y="71">27.27 ms</text>
+  <text class="ratio" x="177" y="71" text-anchor="end">1.53×</text>
+  <text x="120" y="101" text-anchor="end">Babel</text>
+  <rect x="130" y="90" width="152" height="22" rx="4" fill="#7209B7"/>
+  <text x="290" y="101">74.79 ms</text>
+  <text class="ratio" x="274" y="101" text-anchor="end">4.19×</text>
+  <text x="120" y="131" text-anchor="end">Oxc (default)</text>
+  <rect x="130" y="120" width="254" height="22" rx="4" fill="#F78DB6"/>
+  <text x="392" y="131">125.33 ms</text>
+  <text class="ratio" x="376" y="131" text-anchor="end">7.03×</text>
+  <text x="120" y="161" text-anchor="end">Oxbox (WASM)</text>
+  <rect x="130" y="150" width="270" height="22" rx="4" fill="#9D4EDD"/>
+  <text x="408" y="161">133.16 ms</text>
+  <text class="ratio" x="392" y="161" text-anchor="end">7.47×</text>
+  <text x="120" y="191" text-anchor="end">SWC</text>
+  <rect x="130" y="180" width="375" height="22" rx="4" fill="#3A86FF"/>
+  <text x="513" y="191">184.89 ms</text>
+  <text class="ratio" x="497" y="191" text-anchor="end">10.37×</text>
+</svg>

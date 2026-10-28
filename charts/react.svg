@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="232" viewBox="0 0 640 232">
+  <style>
+    text { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; fill: #848d97; dominant-baseline: central; font-variant-numeric: tabular-nums }
+    .ratio { font-size: 12px; fill: #fff }
+  </style>
+  <text x="120" y="11" text-anchor="end">SWC Next</text>
+  <rect x="130" y="0" width="24" height="22" rx="4" fill="#06D6A0"/>
+  <text x="162" y="11">0.30 ms</text>
+  <text x="120" y="41" text-anchor="end">Yuku</text>
+  <rect x="130" y="30" width="41" height="22" rx="4" fill="#FF6B35"/>
+  <text x="179" y="41">0.51 ms</text>
+  <text x="237" y="41">1.69×</text>
+  <text x="120" y="71" text-anchor="end">Oxc (raw transfer)</text>
+  <rect x="130" y="60" width="70" height="22" rx="4" fill="#F72585"/>
+  <text x="208" y="71">0.89 ms</text>
+  <text class="ratio" x="192" y="71" text-anchor="end">2.93×</text>
+  <text x="120" y="101" text-anchor="end">Acorn</text>
+  <rect x="130" y="90" width="121" height="22" rx="4" fill="#4CC9F0"/>
+  <text x="259" y="101">1.54 ms</text>
+  <text class="ratio" x="243" y="101" text-anchor="end">5.06×</text>
+  <text x="120" y="131" text-anchor="end">Babel</text>
+  <rect x="130" y="120" width="160" height="22" rx="4" fill="#7209B7"/>
+  <text x="298" y="131">2.03 ms</text>
+  <text class="ratio" x="282" y="131" text-anchor="end">6.69×</text>
+  <text x="120" y="161" text-anchor="end">Oxbox (WASM)</text>
+  <rect x="130" y="150" width="283" height="22" rx="4" fill="#9D4EDD"/>
+  <text x="421" y="161">3.58 ms</text>
+  <text class="ratio" x="405" y="161" text-anchor="end">11.78×</text>
+  <text x="120" y="191" text-anchor="end">SWC</text>
+  <rect x="130" y="180" width="319" height="22" rx="4" fill="#3A86FF"/>
+  <text x="457" y="191">4.04 ms</text>
+  <text class="ratio" x="441" y="191" text-anchor="end">13.30×</text>
+  <text x="120" y="221" text-anchor="end">Oxc (default)</text>
+  <rect x="130" y="210" width="390" height="22" rx="4" fill="#F78DB6"/>
+  <text x="528" y="221">4.94 ms</text>
+  <text class="ratio" x="512" y="221" text-anchor="end">16.26×</text>
+</svg>

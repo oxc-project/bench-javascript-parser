@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="232" viewBox="0 0 640 232">
+  <style>
+    text { font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; fill: #848d97; dominant-baseline: central; font-variant-numeric: tabular-nums }
+    .ratio { font-size: 12px; fill: #fff }
+  </style>
+  <text x="120" y="11" text-anchor="end">SWC Next</text>
+  <rect x="130" y="0" width="28" height="22" rx="4" fill="#06D6A0"/>
+  <text x="166" y="11">42.63 ms</text>
+  <text x="120" y="41" text-anchor="end">Yuku</text>
+  <rect x="130" y="30" width="36" height="22" rx="4" fill="#FF6B35"/>
+  <text x="174" y="41">55.87 ms</text>
+  <text x="239" y="41">1.31×</text>
+  <text x="120" y="71" text-anchor="end">Oxc (raw transfer)</text>
+  <rect x="130" y="60" width="38" height="22" rx="4" fill="#F72585"/>
+  <text x="176" y="71">58.78 ms</text>
+  <text x="241" y="71">1.38×</text>
+  <text x="120" y="101" text-anchor="end">Acorn</text>
+  <rect x="130" y="90" width="136" height="22" rx="4" fill="#4CC9F0"/>
+  <text x="274" y="101">208.40 ms</text>
+  <text class="ratio" x="258" y="101" text-anchor="end">4.89×</text>
+  <text x="120" y="131" text-anchor="end">Babel</text>
+  <rect x="130" y="120" width="141" height="22" rx="4" fill="#7209B7"/>
+  <text x="279" y="131">216.01 ms</text>
+  <text class="ratio" x="263" y="131" text-anchor="end">5.07×</text>
+  <text x="120" y="161" text-anchor="end">Oxc (default)</text>
+  <rect x="130" y="150" width="210" height="22" rx="4" fill="#F78DB6"/>
+  <text x="348" y="161">321.85 ms</text>
+  <text class="ratio" x="332" y="161" text-anchor="end">7.55×</text>
+  <text x="120" y="191" text-anchor="end">Oxbox (WASM)</text>
+  <rect x="130" y="180" width="233" height="22" rx="4" fill="#9D4EDD"/>
+  <text x="371" y="191">357.39 ms</text>
+  <text class="ratio" x="355" y="191" text-anchor="end">8.38×</text>
+  <text x="120" y="221" text-anchor="end">SWC</text>
+  <rect x="130" y="210" width="375" height="22" rx="4" fill="#3A86FF"/>
+  <text x="513" y="221">575.57 ms</text>
+  <text class="ratio" x="497" y="221" text-anchor="end">13.50×</text>
+</svg>

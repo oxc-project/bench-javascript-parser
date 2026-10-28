@@ -25,7 +25,11 @@ jobs:
           version: "0.3.3"
           node-version: "24"
           cache: true
-          # CI only parses; skip native chart-rendering dependency builds.
           run-install: |
             args: [--frozen-lockfile, --ignore-scripts]
+      - run: vp run type-check
       - run: vp run bench:ci
+        env:
+          BENCH_TIME: "1000"
+          BENCH_WARMUP: "250"
+      - run: vp run readme
