@@ -4,34 +4,34 @@
     .ratio { font-size: 12px; fill: #fff }
   </style>
   <text x="120" y="11" text-anchor="end">SWC Next</text>
-  <rect x="130" y="0" width="27" height="22" rx="4" fill="#06D6A0"/>
-  <text x="165" y="11">40.09 ms</text>
-  <text x="120" y="41" text-anchor="end">Yuku</text>
-  <rect x="130" y="30" width="35" height="22" rx="4" fill="#FF6B35"/>
-  <text x="173" y="41">53.23 ms</text>
-  <text x="238" y="41">1.33×</text>
-  <text x="120" y="71" text-anchor="end">Oxc (raw transfer)</text>
-  <rect x="130" y="60" width="39" height="22" rx="4" fill="#F72585"/>
-  <text x="177" y="71">58.58 ms</text>
-  <text x="242" y="71">1.46×</text>
-  <text x="120" y="101" text-anchor="end">Acorn</text>
-  <rect x="130" y="90" width="135" height="22" rx="4" fill="#4CC9F0"/>
-  <text x="273" y="101">202.63 ms</text>
-  <text class="ratio" x="257" y="101" text-anchor="end">5.05×</text>
-  <text x="120" y="131" text-anchor="end">Babel</text>
-  <rect x="130" y="120" width="141" height="22" rx="4" fill="#7209B7"/>
-  <text x="279" y="131">211.49 ms</text>
-  <text class="ratio" x="263" y="131" text-anchor="end">5.28×</text>
+  <rect x="130" y="0" width="31" height="22" rx="4" fill="#06D6A0"/>
+  <text x="169" y="11">48.05 ms</text>
+  <text x="120" y="41" text-anchor="end">Oxc (raw transfer)</text>
+  <rect x="130" y="30" width="37" height="22" rx="4" fill="#F72585"/>
+  <text x="175" y="41">56.08 ms</text>
+  <text x="240" y="41">1.17×</text>
+  <text x="120" y="71" text-anchor="end">Yuku</text>
+  <rect x="130" y="60" width="39" height="22" rx="4" fill="#FF6B35"/>
+  <text x="177" y="71">59.63 ms</text>
+  <text x="242" y="71">1.24×</text>
+  <text x="120" y="101" text-anchor="end">Babel</text>
+  <rect x="130" y="90" width="131" height="22" rx="4" fill="#7209B7"/>
+  <text x="269" y="101">200.69 ms</text>
+  <text class="ratio" x="253" y="101" text-anchor="end">4.18×</text>
+  <text x="120" y="131" text-anchor="end">Acorn</text>
+  <rect x="130" y="120" width="140" height="22" rx="4" fill="#4CC9F0"/>
+  <text x="278" y="131">213.33 ms</text>
+  <text class="ratio" x="262" y="131" text-anchor="end">4.44×</text>
   <text x="120" y="161" text-anchor="end">Oxc (default)</text>
-  <rect x="130" y="150" width="210" height="22" rx="4" fill="#F78DB6"/>
-  <text x="348" y="161">314.75 ms</text>
-  <text class="ratio" x="332" y="161" text-anchor="end">7.85×</text>
+  <rect x="130" y="150" width="222" height="22" rx="4" fill="#F78DB6"/>
+  <text x="360" y="161">339.01 ms</text>
+  <text class="ratio" x="344" y="161" text-anchor="end">7.06×</text>
   <text x="120" y="191" text-anchor="end">Oxbox (WASM)</text>
-  <rect x="130" y="180" width="234" height="22" rx="4" fill="#9D4EDD"/>
-  <text x="372" y="191">351.51 ms</text>
-  <text class="ratio" x="356" y="191" text-anchor="end">8.77×</text>
+  <rect x="130" y="180" width="223" height="22" rx="4" fill="#9D4EDD"/>
+  <text x="361" y="191">340.74 ms</text>
+  <text class="ratio" x="345" y="191" text-anchor="end">7.09×</text>
   <text x="120" y="221" text-anchor="end">SWC</text>
   <rect x="130" y="210" width="375" height="22" rx="4" fill="#3A86FF"/>
-  <text x="513" y="221">562.92 ms</text>
-  <text class="ratio" x="497" y="221" text-anchor="end">14.04×</text>
+  <text x="513" y="221">572.85 ms</text>
+  <text class="ratio" x="497" y="221" text-anchor="end">11.92×</text>
 </svg>
