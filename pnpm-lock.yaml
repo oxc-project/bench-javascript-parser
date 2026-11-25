@@ -28,7 +28,7 @@ importers:
         version: 0.160.0
       tinybench:
         specifier: ^6.2.3
-        version: 6.2.3
+        version: 6.2.4
       typescript:
         specifier: ^7.0.2
         version: 7.0.2
@@ -576,8 +576,8 @@ packages:
     resolution: {integrity: sha512-IIc9PydmdnTcH1hucWCHfTUbAuHWPDEs8+WlmW7td3jJnaYrbzvPQgcc99FEJc0gURrVU8EskpAr2VMyJ8VbzA==}
     engines: {node: ^20.19.0 || >=22.12.0}
 
-  tinybench@6.2.3:
-    resolution: {integrity: sha512-Al01C2JIBnO2CXCAPbpAl6sUiOZHeThGtHYNTa51JRw9PyWOCdr+9Ong05R4qg/Sk3+H645E8ov1h2c58ityNw==}
+  tinybench@6.2.4:
+    resolution: {integrity: sha512-SQ52jEncXxbMCzJuY2A/jGIbbAu6NYsBWW7grz2pNE+EnzQdoGaoBfpk4qC/opE7qiUcGmGgaGIz5EoHdS1O9w==}
     engines: {node: '>=20.0.0'}
 
   typescript@7.0.2:
@@ -931,7 +931,7 @@ snapshots:
       '@oxc-parser/binding-win32-ia32-msvc': 0.160.0
       '@oxc-parser/binding-win32-x64-msvc': 0.160.0
 
-  tinybench@6.2.3: {}
+  tinybench@6.2.4: {}
 
   typescript@7.0.2:
     optionalDependencies:
